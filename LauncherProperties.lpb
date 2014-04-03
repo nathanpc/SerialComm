@@ -1,0 +1,13 @@
+App:SerialComm.vb
+LMode:0
+Icon:\Storage Card\Developer\eVB\SerialComm\Icons.ico
+PMode:0
+Params:
+Reg:
+Name:
+About:
+Target: n/a
+Opts:IC
+File:ARM: \Storage Card\Developer\eVB\SerialComm\SerialComm.ARM.exe
+File:MIPS: \Storage Card\Developer\eVB\SerialComm\SerialComm.MIPS.exe
+File:SH3: \Storage Card\Developer\eVB\SerialComm\SerialComm.SH3.exe
