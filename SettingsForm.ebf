@@ -1,0 +1,302 @@
+VERSION 5.00
+Object = "{25C953A7-5464-11D1-A714-00AA0044064C}#1.0#0"; "MSCEFile.dll"
+Begin VB.Form SettingsForm 
+   Caption         =   "Settings"
+   ClientHeight    =   2535
+   ClientLeft      =   60
+   ClientTop       =   450
+   ClientWidth     =   3615
+   ScaleHeight     =   2535
+   ScaleWidth      =   3615
+   Begin FILECTLCtl.File fileSettings 
+      Left            =   2760
+      Top             =   1440
+      _cx             =   1000
+      _cy             =   1000
+   End
+   Begin VBCE.Frame Frame2 
+      Height          =   1335
+      Left            =   120
+      TabIndex        =   3
+      Top             =   1200
+      Width           =   2295
+      _cx             =   4048
+      _cy             =   2355
+      Appearance      =   1
+      BackColor       =   -2147483633
+      BorderStyle     =   1
+      Caption         =   "Monitor Window Display"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      ClipControls    =   -1  'True
+      Begin VBCE.OptionButton optSentReceivedMix 
+         Height          =   255
+         Left            =   120
+         TabIndex        =   6
+         Top             =   960
+         Width           =   2055
+         _cx             =   3625
+         _cy             =   450
+         Appearance      =   1
+         BackColor       =   -2147483633
+         Caption         =   "Sent + Received Mixed"
+         Enabled         =   -1  'True
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483640
+         Alignment       =   0
+         Value           =   0   'False
+      End
+      Begin VBCE.OptionButton optLogMonitor 
+         Height          =   255
+         Left            =   120
+         TabIndex        =   5
+         Top             =   600
+         Width           =   2055
+         _cx             =   3625
+         _cy             =   450
+         Appearance      =   1
+         BackColor       =   -2147483633
+         Caption         =   "Logs/Debugging"
+         Enabled         =   -1  'True
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483640
+         Alignment       =   0
+         Value           =   0   'False
+      End
+      Begin VBCE.OptionButton optReceived 
+         Height          =   255
+         Left            =   120
+         TabIndex        =   4
+         Top             =   240
+         Width           =   2055
+         _cx             =   3625
+         _cy             =   450
+         Appearance      =   1
+         BackColor       =   -2147483633
+         Caption         =   "Received data"
+         Enabled         =   -1  'True
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483640
+         Alignment       =   0
+         Value           =   -1  'True
+      End
+   End
+   Begin VBCE.Frame Frame1 
+      Height          =   975
+      Left            =   120
+      TabIndex        =   0
+      Top             =   120
+      Width           =   2295
+      _cx             =   4048
+      _cy             =   1720
+      Appearance      =   1
+      BackColor       =   -2147483633
+      BorderStyle     =   1
+      Caption         =   "Enter Key Behaviour"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      ClipControls    =   -1  'True
+      Begin VBCE.OptionButton optSameSendCRLF 
+         Height          =   255
+         Left            =   120
+         TabIndex        =   2
+         Top             =   600
+         Width           =   2055
+         _cx             =   3625
+         _cy             =   450
+         Appearance      =   1
+         BackColor       =   -2147483633
+         Caption         =   "Same as ""Send + CRLF"""
+         Enabled         =   -1  'True
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483640
+         Alignment       =   0
+         Value           =   -1  'True
+      End
+      Begin VBCE.OptionButton optSameSend 
+         Height          =   255
+         Left            =   120
+         TabIndex        =   1
+         Top             =   240
+         Width           =   2055
+         _cx             =   3625
+         _cy             =   450
+         Appearance      =   1
+         BackColor       =   -2147483633
+         Caption         =   "Same as ""Send"""
+         Enabled         =   -1  'True
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483640
+         Alignment       =   0
+         Value           =   0   'False
+      End
+   End
+   Begin VBCE.CommandButton btCancel 
+      Cancel          =   -1  'True
+      Height          =   375
+      Left            =   2520
+      TabIndex        =   8
+      Top             =   600
+      Width           =   1095
+      _cx             =   1931
+      _cy             =   661
+      Appearance      =   1
+      BackColor       =   12632256
+      Caption         =   "Cancel"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton btSave 
+      Default         =   -1  'True
+      Height          =   375
+      Left            =   2520
+      TabIndex        =   7
+      Top             =   120
+      Width           =   1095
+      _cx             =   1931
+      _cy             =   661
+      Appearance      =   1
+      BackColor       =   12632256
+      Caption         =   "Save"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+End
+Attribute VB_Name = "SettingsForm"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+
+Private Sub Form_Load()
+    Dim arrSettings As Variant
+    arrSettings = GetSettings(fileSettings)
+
+    PopulateSettings arrSettings(settingsEnterBehaviour), arrSettings(settingsMonitorType)
+End Sub
+
+' Updates the view to reflect the saved settings.
+Private Sub PopulateSettings(enterBehaviour As String, monitorType As String)
+    ' Enter behaviour.
+    If enterBehaviour = settEnterBehaviourSend Then
+        optSameSend.Value = True
+    Else
+        optSameSendCRLF.Value = True
+    End If
+    
+    ' Monitor window display settings.
+    If monitorType = settMonitorTypeRecv Then
+        optReceived.Value = True
+    ElseIf monitorType = settMonitorTypeLogs Then
+        optLogMonitor.Value = True
+    Else
+        optSentReceivedMix.Value = True
+    End If
+End Sub
+
+Private Sub btSave_Click()
+    Dim enterBehaviour As String
+    Dim monitorType As String
+    
+    ' Enter behaviour
+    If optSameSend.Value Then
+        enterBehaviour = settEnterBehaviourSend
+    Else
+        enterBehaviour = settEnterBehaviourSendCRLF
+    End If
+    
+    ' Monitor window type.
+    If optReceived.Value Then
+        monitorType = settMonitorTypeRecv
+    ElseIf optLogMonitor.Value Then
+        monitorType = settMonitorTypeLogs
+    Else
+        monitorType = settMonitorTypeMix
+    End If
+    
+    SaveSettings fileSettings, enterBehaviour, monitorType
+    MainForm.ReloadSettings
+
+    Hide
+End Sub
+
+Private Sub btCancel_Click()
+    Hide
+End Sub

@@ -1,0 +1,449 @@
+VERSION 5.00
+Object = "{A32A88B3-817C-11D1-A762-00AA0044064C}#1.0#0"; "mscecomdlg.dll"
+Object = "{481BA4A3-56F2-11D1-A1AB-00C04FA87A04}#1.0#0"; "MSCECOMM.DLL"
+Object = "{BE67ABF5-0137-11D2-9B8A-00C04FAD5AEC}#1.0#0"; "mscecommandbar.dll"
+Object = "{25C953A7-5464-11D1-A714-00AA0044064C}#1.0#0"; "MSCEFile.dll"
+Begin VB.Form MainForm 
+   BorderStyle     =   0  'None
+   Caption         =   "SerialComm"
+   ClientHeight    =   3210
+   ClientLeft      =   0
+   ClientTop       =   -105
+   ClientWidth     =   9600
+   ScaleHeight     =   3210
+   ScaleWidth      =   9600
+   ShowInTaskbar   =   0   'False
+   WindowState     =   2  'Maximized
+   Begin FILECTLCtl.File fileLogs 
+      Left            =   2280
+      Top             =   720
+      _cx             =   1000
+      _cy             =   1000
+   End
+   Begin CEComDlgCtl.CommonDialog dlgSaveLogs 
+      Left            =   3960
+      Top             =   720
+      _cx             =   847
+      _cy             =   847
+      CancelError     =   0   'False
+      Color           =   0
+      DefaultExt      =   "txt"
+      DialogTitle     =   "Save Logs"
+      FileName        =   ""
+      Filter          =   "Text (*.txt)|*.txt|All (*.*)|*.*"
+      FilterIndex     =   0
+      Flags           =   0
+      HelpCommand     =   0
+      HelpContext     =   ""
+      HelpFile        =   ""
+      InitDir         =   ""
+      MaxFileSize     =   256
+      FontBold        =   0   'False
+      FontItalic      =   0   'False
+      FontName        =   ""
+      FontSize        =   10
+      FontUnderline   =   0   'False
+      Max             =   0
+      Min             =   0
+      FontStrikethru  =   0   'False
+   End
+   Begin FILECTLCtl.File fileSettings 
+      Left            =   1560
+      Top             =   720
+      _cx             =   1000
+      _cy             =   1000
+   End
+   Begin CECOMMCtl.Comm Serial 
+      Left            =   3000
+      Top             =   720
+      _cx             =   1400
+      _cy             =   1000
+      CommPort        =   1
+      Settings        =   "9600,N,8,1"
+      InputLen        =   0
+      InputMode       =   0
+      NullDiscard     =   0   'False
+      ParityReplace   =   "?"
+      RThreshold      =   1
+      SThreshold      =   0
+      Handshaking     =   0
+      DTREnable       =   0   'False
+      RTSEnable       =   0   'False
+   End
+   Begin CommandbarLib.CommandBar cmdBar 
+      Height          =   345
+      Left            =   0
+      TabIndex        =   0
+      Top             =   0
+      Width           =   9605
+      _cx             =   16942
+      _cy             =   600
+      Enabled         =   -1  'True
+      OKButton        =   0   'False
+      HelpButton      =   0   'False
+      CloseButton     =   -1  'True
+   End
+   Begin VBCE.CommandButton btSendCRLF 
+      Height          =   375
+      Left            =   8500
+      TabIndex        =   4
+      Top             =   2840
+      Width           =   1095
+      _cx             =   1931
+      _cy             =   661
+      Appearance      =   1
+      BackColor       =   12632256
+      Caption         =   "Send + CRLF"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton btSend 
+      Height          =   375
+      Left            =   7800
+      TabIndex        =   3
+      Top             =   2840
+      Width           =   615
+      _cx             =   1085
+      _cy             =   661
+      Appearance      =   1
+      BackColor       =   12632256
+      Caption         =   "Send"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.TextBox txtSerialCommand 
+      Height          =   375
+      Left            =   0
+      TabIndex        =   2
+      Top             =   2840
+      Width           =   7695
+      _cx             =   13573
+      _cy             =   661
+      Appearance      =   1
+      BackColor       =   -2147483643
+      BorderStyle     =   1
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Text            =   ""
+      Alignment       =   0
+      HideSelection   =   -1  'True
+      Locked          =   0   'False
+      MaxLength       =   0
+      MultiLine       =   0   'False
+      PasswordChar    =   ""
+      ScrollBars      =   0
+   End
+   Begin VBCE.TextBox txtSerialMonitor 
+      Height          =   2415
+      Left            =   0
+      TabIndex        =   1
+      Top             =   360
+      Width           =   9600
+      _cx             =   16933
+      _cy             =   4260
+      Appearance      =   1
+      BackColor       =   -2147483643
+      BorderStyle     =   1
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Text            =   ""
+      Alignment       =   0
+      HideSelection   =   -1  'True
+      Locked          =   0   'False
+      MaxLength       =   0
+      MultiLine       =   -1  'True
+      PasswordChar    =   ""
+      ScrollBars      =   2
+   End
+End
+Attribute VB_Name = "MainForm"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+
+Dim arrSettings As Variant
+
+Dim cbxBaud As CommandBarComboBox
+Dim cbxParity As CommandBarComboBox
+Dim cbxDataBits As CommandBarComboBox
+Dim cbxStopBits As CommandBarComboBox
+
+Private Sub Form_Load()
+    InitCommandBar
+    ToggleConnEnabledControls
+    
+    ReloadSettings
+End Sub
+
+' Initializes the CommandBar.
+Private Sub InitCommandBar()
+    Dim mnuMain As CommandbarLib.CommandBarMenuBar
+    Dim mnuFile As CommandbarLib.Item
+    Dim mnuEdit As CommandbarLib.Item
+    Dim cmdSeparator As CommandBarButton
+    
+    Set mnuMain = cmdBar.Controls.Add(cbrMenuBar, "MainMenu")
+    
+    ' File menu.
+    Set mnuFile = mnuMain.Items.Add(1, "File", "&File")
+    mnuFile.SubItems.Add , "Connect", "&Connect"
+    mnuFile.SubItems.Add , "Disconnect", "&Disconnect"
+    mnuFile.SubItems.Add , "", "", cbrMenuSeparator
+    mnuFile.SubItems.Add , "Settings", "&Settings"
+    mnuFile.SubItems.Add , "About", "&About"
+    mnuFile.SubItems.Add , "", "", cbrMenuSeparator
+    mnuFile.SubItems.Add , "Exit", "E&xit"
+    
+    ' Edit menu.
+    Set mnuEdit = mnuMain.Items.Add(2, "Edit", "&Edit")
+    mnuEdit.SubItems.Add , "Clear", "C&lear"
+    mnuEdit.SubItems.Add , "", "", cbrMenuSeparator
+    mnuEdit.SubItems.Add , "SaveLogs", "&Save Logs"
+    
+    Set cmdSeparator = cmdBar.Controls.Add(cbrButton)
+    cmdSeparator.Style = cbrSeparator
+
+    ' Baud rate.
+    Set cbxBaud = cmdBar.Controls.Add(cbrComboBox, keyCbxBaud)
+    PopulateComboBox cbxBaud, keyCbxBaud
+    cbxBaud.Width = 985
+    cbxBaud.ListIndex = 4
+    
+    Set cmdSeparator = cmdBar.Controls.Add(cbrButton)
+    cmdSeparator.Style = cbrSeparator
+    
+    ' Parity.
+    Set cbxParity = cmdBar.Controls.Add(cbrComboBox, keyCbxParity)
+    PopulateComboBox cbxParity, keyCbxParity
+    cbxParity.Width = 985
+    cbxParity.ListIndex = 0
+    
+    Set cmdSeparator = cmdBar.Controls.Add(cbrButton)
+    cmdSeparator.Style = cbrSeparator
+    
+    ' Data bits.
+    Set cbxDataBits = cmdBar.Controls.Add(cbrComboBox, keyCbxData)
+    PopulateComboBox cbxDataBits, keyCbxData
+    cbxDataBits.Width = 985
+    cbxDataBits.ListIndex = 0
+    
+    Set cmdSeparator = cmdBar.Controls.Add(cbrButton)
+    cmdSeparator.Style = cbrSeparator
+    
+    ' Stop bits.
+    Set cbxStopBits = cmdBar.Controls.Add(cbrComboBox, keyCbxStop)
+    PopulateComboBox cbxStopBits, keyCbxStop
+    cbxStopBits.Width = 985
+    cbxStopBits.ListIndex = 0
+End Sub
+
+' Populates a ComboBox.
+Private Sub PopulateComboBox(cmbBox As CommandBarComboBox, cbxName As String)
+    Select Case cbxName
+        Case keyCbxBaud
+            cmbBox.AddItem "300"
+            cmbBox.AddItem "1200"
+            cmbBox.AddItem "2400"
+            cmbBox.AddItem "4800"
+            cmbBox.AddItem "9600"
+            cmbBox.AddItem "14400"
+            cmbBox.AddItem "19200"
+            cmbBox.AddItem "28800"
+            cmbBox.AddItem "38400"
+            cmbBox.AddItem "57600"
+        Case keyCbxParity
+            cmbBox.AddItem "None"
+            cmbBox.AddItem "Odd"
+            cmbBox.AddItem "Even"
+            cmbBox.AddItem "Mark"
+            cmbBox.AddItem "Space"
+        Case keyCbxData
+            cmbBox.AddItem "8 bits"
+            cmbBox.AddItem "7 bits"
+            cmbBox.AddItem "6 bits"
+            cmbBox.AddItem "5 bits"
+        Case keyCbxStop
+            cmbBox.AddItem "1 bit"
+            cmbBox.AddItem "2 bits"
+    End Select
+End Sub
+
+Private Function GetSerialParamString()
+    Dim strParam As String
+    
+    strParam = cbxBaud.Text & ","
+    strParam = strParam & Mid(cbxParity.Text, 1, 1) & ","
+    strParam = strParam & Mid(cbxDataBits.Text, 1, 1) & ","
+    strParam = strParam & Mid(cbxStopBits.Text, 1, 1)
+    
+    GetSerialParamString = strParam
+End Function
+
+' Toogle the "Enabled" of controls that require a connection.
+Private Sub ToggleConnEnabledControls()
+    txtSerialCommand.Enabled = Serial.PortOpen
+    btSend.Enabled = Serial.PortOpen
+    btSendCRLF.Enabled = Serial.PortOpen
+End Sub
+
+' Reload the settings cache.
+Public Sub ReloadSettings()
+    arrSettings = GetSettings(fileSettings)
+End Sub
+
+' Save the logs.
+Private Sub SaveLogs()
+    dlgSaveLogs.ShowSave
+
+    On Error Resume Next
+    If Err = 0 Then ' Picked a file name.
+        fileLogs.Open dlgSaveLogs.FileName, fsModeOutput, fsAccessWrite
+        
+        If Err Then
+            MsgBox "ERROR: " & Err.Number & " - " & Err.Description
+        Else
+            fileLogs.LinePrint txtSerialMonitor.Text
+            fileLogs.Close
+        End If
+    End If
+End Sub
+
+' Center a popup Form.
+Private Sub CenterForm(frmCenter As Form, frmParent As Form)
+    Dim nLeft, nTop
+
+    nLeft = (frmParent.Width - frmCenter.Width) / 2
+    nTop = (frmParent.Height - frmCenter.Height) / 2
+    
+    If nLeft < 0 Then nLeft = 0
+    If nTop < 0 Then nTop = 0
+    
+    frmCenter.Left = nLeft
+    frmCenter.Top = nTop
+End Sub
+
+' Event triggered when the user selects a menu item.
+Private Sub cmdBar_MenuClick(ByVal Item As CommandbarLib.Item)
+    Select Case Item.Key
+        Case "Connect"
+            Serial.Settings = GetSerialParamString
+            Serial.PortOpen = True
+            ToggleConnEnabledControls
+        Case "Disconnect"
+            Serial.PortOpen = False
+            ToggleConnEnabledControls
+        Case "Settings"
+            CenterForm SettingsForm, Me
+            SettingsForm.Show
+        Case "About"
+            CenterForm AboutForm, Me
+            AboutForm.Show
+        Case "Exit"
+            App.End
+        Case "Clear"
+            Dim userSelection As Variant
+            userSelection = MsgBox("Clear the serial monitor logs?", vbYesNo, "Confirm Action")
+            
+            If userSelection = vbYes Then
+                txtSerialMonitor.Text = ""
+            End If
+        Case "SaveLogs"
+            SaveLogs
+    End Select
+End Sub
+
+Private Sub btSend_Click()
+    Serial.Output = txtSerialCommand.Text
+    txtSerialCommand.Text = ""
+    txtSerialCommand.SetFocus
+End Sub
+
+Private Sub btSendCRLF_Click()
+    Serial.Output = txtSerialCommand.Text & vbCrLf
+    txtSerialCommand.Text = ""
+    txtSerialCommand.SetFocus
+End Sub
+
+Private Sub Serial_OnComm()
+    Dim strBuffer As String
+    
+    'Serial.InputLen = 1
+    Select Case Serial.CommEvent
+        Case comEvReceive
+            While Serial.InBufferCount > 0
+                strBuffer = strBuffer & Serial.Input
+            Wend
+        
+            If arrSettings(settingsMonitorType) = settMonitorTypeLogs Then
+                ' Logging mode.
+                txtSerialMonitor.Text = txtSerialMonitor.Text & vbCrLf & "<-- " & strBuffer
+            Else
+                ' Normal shitty mode.
+                txtSerialMonitor.Text = txtSerialMonitor.Text & strBuffer
+            End If
+        Case comEvSend
+            ' Do nothing.
+    End Select
+End Sub
+
+Private Sub txtSerialCommand_KeyPress(ByVal KeyAscii As Integer)
+    If KeyAscii = vbKeyReturn Then
+        ' Enter key pressed.
+        Dim tmpBuffer As String
+        tmpBuffer = txtSerialCommand.Text
+
+        ' Check which behaviour to follow.
+        If arrSettings(settingsEnterBehaviour) = settEnterBehaviourSend Then
+            btSend_Click
+        Else
+            btSendCRLF_Click
+        End If
+        
+        ' Check if its in logging or mix mode.
+        If arrSettings(settingsMonitorType) = settMonitorTypeLogs Then
+            ' Logging mode.
+            txtSerialMonitor.Text = txtSerialMonitor.Text & vbCrLf & "--> " & tmpBuffer
+        ElseIf arrSettings(settingsMonitorType) = settMonitorTypeMix Then
+            ' Mix mode. (I have no idea if someone will actually use this...)
+            txtSerialMonitor.Text = txtSerialMonitor.Text & tmpBuffer
+        End If
+    End If
+End Sub

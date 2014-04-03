@@ -1,0 +1,116 @@
+VERSION 5.00
+Object = "{F7346713-70C5-11D1-9AC9-00C04FAD5AEC}#1.0#0"; "MSCEImage.dll"
+Begin VB.Form AboutForm 
+   Caption         =   "About"
+   ClientHeight    =   810
+   ClientLeft      =   60
+   ClientTop       =   450
+   ClientWidth     =   3045
+   ScaleHeight     =   810
+   ScaleWidth      =   3045
+   Begin VBCE.Label Label3 
+      Height          =   255
+      Left            =   960
+      TabIndex        =   3
+      Top             =   600
+      Width           =   2055
+      _cx             =   3625
+      _cy             =   450
+      Appearance      =   1
+      AutoSize        =   0   'False
+      BackColor       =   -2147483633
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "nathanpc@dreamintech.net"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.Label Label2 
+      Height          =   255
+      Left            =   960
+      TabIndex        =   2
+      Top             =   360
+      Width           =   2055
+      _cx             =   3625
+      _cy             =   450
+      Appearance      =   1
+      AutoSize        =   0   'False
+      BackColor       =   -2147483633
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "2014 (c) Nathan Campos"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin IMAGECtl.ImageCtl ImageCtl1 
+      Height          =   735
+      Left            =   120
+      TabIndex        =   1
+      Top             =   120
+      Width           =   735
+      _cx             =   1296
+      _cy             =   1296
+      Picture         =   ""
+      Stretch         =   0   'False
+   End
+   Begin VBCE.Label Label1 
+      Height          =   255
+      Left            =   960
+      TabIndex        =   0
+      Top             =   120
+      Width           =   2055
+      _cx             =   3625
+      _cy             =   450
+      Appearance      =   1
+      AutoSize        =   0   'False
+      BackColor       =   -2147483633
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "SerialComm v1.0"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+End
+Attribute VB_Name = "AboutForm"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+
